@@ -16,15 +16,15 @@ const LoginRegister = () => {
 
   return (
     <div className="relative w-full h-screen bg-cover bg-center flex justify-center items-center" style={{ backgroundImage: 'url(./assets/bg.jpeg)' }}>
-      {/* Blurred Background Overlay */}
-      {/* <div className="absolute inset-0 bg-black opacity-50" /> */}
+    
 
-      {/* New Wrapper for Rounded Blur Effect */}
-      <div className="relative bg-black   rounded-lg shadow-lg overflow-hidden">
+
+    <div className="relative backdrop-blur-sm bg-black/70  rounded-lg shadow-lg overflow-hidden">
+
         <div className="backdrop-blur-sm bg-black/30 p-10">
-          {/* Content Container */}
+          
           <div className="flex flex-col justify-center items-center">
-            {/* Login Form */}
+            
             {!isRegistering && (
               <form className="w-full">
                 <h1 className="text-2xl text-center mb-4 text-white">Login</h1>
