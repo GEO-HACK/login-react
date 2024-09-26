@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+// firebase imports
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../../firebase";  //import firebase configuration
 
 const LoginRegister = () => {
   const [isRegistering, setIsRegistering] = useState(false);
@@ -17,16 +20,34 @@ const LoginRegister = () => {
     setIsRegistering(false);
   };
 
-  const handleRegistrationSubmit = () =>
+  const handleRegistrationSubmit = (e) =>
 {
-    // e.preventDefault();
+    e.preventDefault();
+    
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        console.log('user registered:', userCredential.user);
+    })
+    .catch((error) => {
+        console.error('Registration error:' ,error.message)
+    });
 
-    console.log ('username:' , username);
-    console.log ('email:' , email);
-    console.log ('password:', password);
 
+};
+   
 
-}
+//   for login
+   const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        console.log('user logged in:', userCredential.user);
+
+    })
+    .catch((error) => {
+        console.error ('Login error ', error.message);
+    });
+   };
   return (
     <div className="relative w-full h-screen bg-cover bg-center flex justify-center items-center" style={{ backgroundImage: 'url(./assets/bg.jpeg)' }}>
     
