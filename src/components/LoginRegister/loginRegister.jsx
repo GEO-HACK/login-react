@@ -5,6 +5,9 @@ import { MdEmail } from "react-icons/md";
 
 const LoginRegister = () => {
   const [isRegistering, setIsRegistering] = useState(false);
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleRegisterClick = () => {
     setIsRegistering(true);
@@ -14,6 +17,16 @@ const LoginRegister = () => {
     setIsRegistering(false);
   };
 
+  const handleRegistrationSubmit = () =>
+{
+    // e.preventDefault();
+
+    console.log ('username:' , username);
+    console.log ('email:' , email);
+    console.log ('password:', password);
+
+
+}
   return (
     <div className="relative w-full h-screen bg-cover bg-center flex justify-center items-center" style={{ backgroundImage: 'url(./assets/bg.jpeg)' }}>
     
@@ -68,6 +81,8 @@ const LoginRegister = () => {
                     type="text" 
                     placeholder="Username" 
                     required 
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     className="w-full h-full bg-transparent border-2 border-opacity-10 border-white rounded-full text-white text-sm pl-4 pr-10 outline-none" 
                   />
                   <FaUser className="absolute right-5 top-1/2 transform -translate-y-1/2 text-lg text-white" />
@@ -77,6 +92,8 @@ const LoginRegister = () => {
                     type="email" 
                     placeholder="Email" 
                     required 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full h-full bg-transparent border-2 border-opacity-10 border-white rounded-full text-white text-sm pl-4 pr-10 outline-none" 
                   />
                   <MdEmail className="absolute right-5 top-1/2 transform -translate-y-1/2 text-lg text-white" />
@@ -86,6 +103,8 @@ const LoginRegister = () => {
                     type="password" 
                     placeholder="Password" 
                     required 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full h-full bg-transparent border-2 border-opacity-10 border-white rounded-full text-white text-sm pl-4 pr-10 outline-none" 
                   />
                   <FaLock className="absolute right-5 top-1/2 transform -translate-y-1/2 text-lg text-white" />
@@ -95,7 +114,7 @@ const LoginRegister = () => {
                     <input type="checkbox" className="accent-white mr-1" /> I agree to the terms & conditions
                   </label>
                 </div>
-                <button type="submit" className="w-full h-[40px] bg-white rounded-full shadow-md text-gray-800 font-bold">Register</button>
+                <button type="submit"  onClick={handleRegistrationSubmit} className="w-full h-[40px] bg-white rounded-full shadow-md text-gray-800 font-bold">Register</button>
                 <div className="text-xs text-center my-4 text-white">
                   <p>Already have an account? <a href="#" onClick={handleLoginClick} className="font-semibold hover:underline">Login</a></p>
                 </div>
