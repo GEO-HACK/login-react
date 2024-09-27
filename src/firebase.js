@@ -1,19 +1,18 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-// Corrected the config name to match the one used in initialization
+// Use environment variables for Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAZ3G-jq7dnmmpUglhLXU-1DOFL8ZY2Pas",
-  authDomain: "authentication-51870.firebaseapp.com",
-  projectId: "authentication-51870",
-  storageBucket: "authentication-51870.appspot.com",
-  messagingSenderId: "272317961348",
-  appId: "1:272317961348:web:7b7329a44aefd50b6c5ed1"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);  // Use firebaseConfig
-
+const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export { auth };
